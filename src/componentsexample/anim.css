@@ -1,0 +1,29 @@
+.animated-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200vh;
+  }
+  
+  .animated-name {
+    font-size: 4rem;
+    font-weight: bold;
+    animation: expand 10s ease-out forwards;
+    transform-origin: center;
+  }
+  
+  @keyframes expand {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
