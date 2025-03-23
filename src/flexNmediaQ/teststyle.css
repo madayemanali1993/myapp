@@ -1,0 +1,26 @@
+.box1 {
+    padding: 20px;
+    background-color: lightblue;
+     width:50%;
+     border: 1px solid red;
+     display: flex;
+     flex-direction: column;
+   }
+   .box2 {
+    padding: 20px;
+    background-color: lightblue;
+     width:50%;
+     border: 1px solid red;
+   }
+
+   .container {
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+  }
+   @media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+      background-color: pink;
+    }
+}
