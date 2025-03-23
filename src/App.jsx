@@ -1,6 +1,6 @@
 import React from "react";
 //import ContextHookParent from './Contexthook/ContextHookParent';
-import TEST from './flexNmediaQ/TEST';
+import Login from './login/login';
 // import Anim from './componentsexample/anim';
 
 function App()
@@ -20,7 +20,7 @@ return (
   const calculation = useMemo(() => expensiveCalculation(count),
    [count]);(1st param funct ,2nd value on which u want to run function) */}
 {/* <Anim/> */}
-<TEST/>
+<Login/>
   </>
 )
 }
