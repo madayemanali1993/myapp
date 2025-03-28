@@ -49,19 +49,3 @@
   .login-btn:hover {
     background-color: #45a049;
   }
-  .logout-btn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #a9bda9;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .logout-btn:hover {
-    background-color: #a9bda9;
-  }
-  
