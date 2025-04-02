@@ -29,23 +29,28 @@ export default function Login() {
     setError('');
 
     try {
-      const response = await fetch("https://mongoapp-production.up.railway.app/api/users", {
-        method: "POST",
+      const response = await fetch(`https://mongoapp-production.up.railway.app/api/users?name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, password }),
+       // body: JSON.stringify({ name, password }),
         mode: "cors",
       });
   
       const data = await response.json();
   
-      if (response.ok) {
-        alert("User created successfully!");
-        setName('');
-        setPassword('');
-      } else {
-        setError(data.message || "Failed to create user.");
+      if (data?.success === false) {
+      
+        alert(data?.message || "Failed to create user.");
+        setError(data?.message || "Failed to create user.");
+      } 
+      else if(data?.name === name)
+      {  loggedinHome();
+        alert("You have logged in succesfully!");}
+      else {
+        alert(data?.message || "Failed to create user.");
+        setError(data?.message || "Failed to create user.");
       }
     } catch (error) {
       setError("Error connecting to the server.");
@@ -83,7 +88,7 @@ export default function Login() {
 
         {error && <div className="error">{error}</div>}
 
-        <button type="submit" onClick={loggedinHome} className="login-btn">
+        <button type="submit" className="login-btn">
           Login
         </button>
         <button onClick={goToSignup}>Signup</button>
