@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css';
+import TextField from '@mui/material/TextField';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -54,24 +55,25 @@ const Signup = () => {
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="username">Name</label>
-          <input
-            type="text"
-            id="username"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter name"
-          />
+
+           <TextField
+                id={`username`}
+                key={`username-textbox`}
+                onChange={(e) => setName(e.target.value)}
+                value={'name'}
+              />
         </div>
 
         <div className="input-group">
           <label htmlFor="password">Password</label>
-          <input
+          <TextField
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
           />
+              
         </div>
 
         {error && <div className="error">{error}</div>}
