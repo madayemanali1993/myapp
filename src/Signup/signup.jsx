@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import './signup.css';
 import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState();
   const [error, setError] = useState('');
-
+  const navigate = useNavigate();
+  const goToSignin = () => {
+    navigate('/'); // Navigates to Dashboard
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (!name || !password) {
-      setError('Both fields are required.');
+    if (!name || !password || !email || !phone) {
+      setError('All fields are required.');
       return;
     }
   
@@ -28,16 +34,19 @@ const Signup = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, password }),
+        body: JSON.stringify({ name, password, email, phone }),
         mode: "cors",
       });
   
       const data = await response.json();
   
       if (response.ok) {
-        alert("User created successfully!");
+        alert("User created successfully ...Redirecting to login page!");
         setName('');
         setPassword('');
+        setEmail('');
+        setPhone();
+        goToSignin();
       } else {
         setError(data.message || "Failed to create user.");
       }
@@ -54,13 +63,13 @@ const Signup = () => {
       <h2>Create New User Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <label htmlFor="username">Name</label>
+          <label htmlFor="name">Name</label>
 
            <TextField
-                id={`username`}
-                key={`username-textbox`}
+                id={`name`}
+                key={`name-textbox`}
                 onChange={(e) => setName(e.target.value)}
-                value={'name'}
+                value={name}
               />
         </div>
 
@@ -75,7 +84,26 @@ const Signup = () => {
           />
               
         </div>
+        <div className="input-group">
+          <label htmlFor="email">Email</label>
 
+           <TextField
+                id={`email`}
+                key={`email-textbox`}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+        </div>
+        <div className="input-group">
+          <label htmlFor="phone">Contact</label>
+
+           <TextField
+                id={`phone`}
+                key={`phone-textbox`}
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
+              />
+        </div>
         {error && <div className="error">{error}</div>}
 
         <button type="submit" className="signup-btn">
