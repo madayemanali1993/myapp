@@ -35,7 +35,7 @@
     margin-bottom: 10px;
   }
   
-  .login-btn {
+  .signup-btn {
     width: 100%;
     padding: 10px;
     background-color: #4caf50;
@@ -44,9 +44,9 @@
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 20px;
   }
   
-  .login-btn:hover {
+  .signup-btn:hover {
     background-color: #45a049;
   }

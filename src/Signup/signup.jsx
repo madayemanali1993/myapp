@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import './login.css';
-import { useNavigate } from 'react-router-dom';
+import './signup.css';
 
-export default function Login() {
+const Signup = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
-  const goToSignup = () => {
-    navigate('/Signup'); // Navigates to Dashboard
-  };
-  const loggedinHome = () => {
-    navigate('/LoginHome'); // Navigates to Dashboard
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -52,15 +45,15 @@ export default function Login() {
       console.error("Error:", error);
     }
   };
-  
+
   
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>Create New User Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
-          <label htmlFor="username">UserName</label>
+          <label htmlFor="username">Name</label>
           <input
             type="text"
             id="username"
@@ -83,12 +76,14 @@ export default function Login() {
 
         {error && <div className="error">{error}</div>}
 
-        <button type="submit" onClick={loggedinHome} className="login-btn">
-          Login
+        <button type="submit" className="signup-btn">
+          Signup
         </button>
-        <button onClick={goToSignup}>Signup</button>
+  
+
       </form>
     </div>
   );
 };
 
+export default Signup;
