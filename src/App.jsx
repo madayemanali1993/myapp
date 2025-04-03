@@ -5,6 +5,9 @@ import Signup from './Signup/signup';
 import LoginHome from './login/loginHome/LoginHome';
 // import Anim from './componentsexample/anim';
 import { Routes, Route } from 'react-router-dom';
+// import ProductDisplay from '../src/login/loginHome/ProductDisplay';
+import CartPage from '../src/login/loginHome/CartPage';
+
 function App()
 {
 
@@ -30,6 +33,8 @@ return (
       <Route path="/" element={<Login />} />
       <Route path="/Signup" element={<Signup />} />
       <Route path="/LoginHome" element={<LoginHome />} />
+      {/* <Route path="/ProductDisplay" element={<ProductDisplay />}/> */}
+      <Route path="/cart" element={<CartPage/>}/>
     </Routes>
 );
 }
